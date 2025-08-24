@@ -1,4 +1,3 @@
-
 const vscode = require('vscode');
 
 const { LanguageClient, TransportKind } = require('vscode-languageclient/node');
@@ -10,7 +9,8 @@ function activate(context) {
   });
 
   const clientOptions = {
-    documentSelector: [{ scheme: 'file', language: 'bibtex' }]
+    documentSelector: [{ scheme: 'file', language: 'bibtex' }],
+    synchronize: { configurationSection: 'jabref' }
   };
 
   const client = new LanguageClient(

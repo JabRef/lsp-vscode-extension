@@ -9,7 +9,22 @@
       "languages": [{
         "id": "bibtex",
         "extensions": [".bib", ".bibtex"]
-      }]
+      }],
+      "configuration": {
+      "title": "JabRef 4 VSCode",
+      "properties": {
+        "jabref.consistencyCheck": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable consistency check"
+        },
+        "jabref.integrityCheck": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable integrity check"
+        }
+      }
+    }
     },
     "dependencies": {
       "vscode-languageclient": "^9.0.1"
