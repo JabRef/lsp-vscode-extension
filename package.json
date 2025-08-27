@@ -56,7 +56,7 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
-    "@typescript-eslint/parser": "^8.39.0",
+    "@typescript-eslint/parser": "^8.41.0",
     "eslint": "^9.32.0",
     "typescript": "^5.9.2",
     "@vscode/test-cli": "^0.0.11",
