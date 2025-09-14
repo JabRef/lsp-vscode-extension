@@ -76,3 +76,11 @@ jobs:
       - run: npm run publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: jbangdev/jbang-action@latest
+        with:
+          script: com.github.nbbrd.heylogs:heylogs-cli:0.14.0:bin
+          scriptargs: "check --versioning semver"
