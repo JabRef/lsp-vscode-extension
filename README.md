@@ -10,3 +10,7 @@ Both options can be enabled and disabled separately in the VSCode extension sett
 ## How to test this extension
 
 Currently, you need to clone this repository, run `npm install` and open the repo in VSCode, after that you can use VSCodes' run and debug capability to run a VSCode instance with the plugin installed.
+
+Alternatively, you can download pre-build binaries:
+
+- [Nightly build](https://nightly.link/JabRef/lsp-vscode-extension/workflows/build/main?preview)
