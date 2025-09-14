@@ -4,7 +4,7 @@
   "publisher": "jabref",
   "displayName": "JabRef 4 VSCode",
   "description": "Adds the ability to use the language server from JabRef inside VSCode and other JabRef features.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "sponsor": {
     "url": "https://github.com/sponsors/JabRef"
   },
