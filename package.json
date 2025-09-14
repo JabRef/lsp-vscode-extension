@@ -31,12 +31,27 @@
     "configuration": {
       "title": "JabRef 4 VSCode",
       "properties": {
-        "jabref.consistencyCheck": {
+        "jabref.consistencyCheck.enabled": {
           "type": "boolean",
           "default": true,
           "description": "Enable consistency check"
         },
-        "jabref.integrityCheck": {
+        "jabref.consistencyCheck.required": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable warnings on required fields"
+        },
+        "jabref.consistencyCheck.optional": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable warnings on optional fields"
+        },
+        "jabref.consistencyCheck.unknown": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable warnings on unknown fields"
+        },
+        "jabref.integrityCheck.enabled": {
           "type": "boolean",
           "default": true,
           "description": "Enable integrity check"
