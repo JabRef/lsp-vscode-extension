@@ -80,7 +80,7 @@ jobs:
   changelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: jbangdev/jbang-action@latest
+      - uses: jbangdev/jbang-action@v0.130.0
         with:
           script: com.github.nbbrd.heylogs:heylogs-cli:0.14.0:bin
           scriptargs: "check --versioning semver"
