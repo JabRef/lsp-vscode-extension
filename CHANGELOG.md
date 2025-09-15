@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 
 All notable changes to the "jabref-4-vscode" extension will be documented in this file.
 
