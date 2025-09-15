@@ -71,7 +71,7 @@
   "devDependencies": {
     "@release-it/keep-a-changelog": "^7.0.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "22.17.2",
+    "@types/node": "24.4.0",
     "@types/vscode": "^1.103.0",
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
@@ -79,7 +79,7 @@
     "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.6.0",
     "esbuild": "^0.25.9",
-    "eslint": "^9.32.0",
+    "eslint": "^9.35.0",
     "release-it": "^19.0.4",
     "typescript": "^5.9.2"
   },
@@ -92,7 +92,8 @@
     },
     "plugins": {
       "@release-it/keep-a-changelog": {
-        "filename": "CHANGELOG.md"
+        "filename": "CHANGELOG.md",
+        "addVersionUrl": true
       }
     }
   }
