@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: jbangdev/jbang-action@v0.130.0
+      - uses: jbangdev/jbang-action@v0.131.0
         with:
           script: com.github.nbbrd.heylogs:heylogs-cli:0.14.0:bin
           scriptargs: "check --versioning semver"
