@@ -1,122 +1,126 @@
 {
-  "name": "jabref-4-vscode",
-  "repository": "https://github.com/JabRef/lsp-vscode-extension",
-  "publisher": "jabref",
-  "displayName": "JabRef 4 VSCode",
-  "description": "Adds the ability to use the language server from JabRef inside VSCode and other JabRef features.",
-  "version": "0.1.1",
-  "sponsor": {
-    "url": "https://github.com/sponsors/JabRef"
-  },
-  "engines": {
-    "vscode": "^1.103.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onLanguage:bibtex",
-    "onLanguage:markdown"
-  ],
-  "main": "./dist/extension.js",
-  "contributes": {
-    "languages": [
-      {
-        "id": "bibtex",
-        "extensions": [
-          ".bib",
-          ".bibtex"
-        ]
-      },
-	  {
-        "id": "markdown",
-        "extensions": [
-          ".md"
-        ]
-      }
+    "name": "jabref-4-vscode",
+    "repository": "https://github.com/JabRef/lsp-vscode-extension",
+    "publisher": "jabref",
+    "displayName": "JabRef 4 VSCode",
+    "description": "Adds the ability to use the language server from JabRef inside VSCode and other JabRef features.",
+    "version": "0.1.1",
+    "sponsor": {
+        "url": "https://github.com/sponsors/JabRef"
+    },
+    "engines": {
+        "vscode": "^1.103.0"
+    },
+    "categories": [
+        "Other"
     ],
-    "configuration": {
-      "title": "JabRef 4 VSCode",
-      "properties": {
-        "jabref.consistencyCheck.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable consistency check"
-        },
-        "jabref.consistencyCheck.required": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable warnings on required fields"
-        },
-        "jabref.consistencyCheck.optional": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable warnings on optional fields"
-        },
-        "jabref.consistencyCheck.unknown": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable warnings on unknown fields"
-        },
-        "jabref.integrityCheck.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable integrity check"
-        },
-        "jabref.client.port": {
-          "type": "number",
-          "default": 2087,
-          "description": "Port for the JabRef language server"
-        },
-        "jabref.client.host": {
-          "type": "string",
-          "default": "localhost",
-          "description": "Host for the JabRef language server"
+    "activationEvents": [
+        "onLanguage:bibtex",
+        "onLanguage:markdown"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "bibtex",
+                "extensions": [
+                    ".bib",
+                    ".bibtex"
+                ]
+            },
+            {
+                "id": "markdown",
+                "extensions": [
+                    ".md"
+                ]
+            }
+        ],
+        "configuration": {
+            "title": "JabRef 4 VSCode",
+            "properties": {
+                "jabref.consistencyCheck.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable consistency check"
+                },
+                "jabref.consistencyCheck.required": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable warnings on required fields"
+                },
+                "jabref.consistencyCheck.optional": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable warnings on optional fields"
+                },
+                "jabref.consistencyCheck.unknown": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable warnings on unknown fields"
+                },
+                "jabref.integrityCheck.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable integrity check"
+                },
+                "jabref.client.port": {
+                    "type": "number",
+                    "default": 2087,
+                    "description": "Port for the JabRef language server"
+                },
+                "jabref.client.host": {
+                    "type": "string",
+                    "default": "localhost",
+                    "description": "Host for the JabRef language server"
+                }
+            }
         }
-      }
-    }
-  },
-  "dependencies": {
-    "vscode-languageclient": "^9.0.1"
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run build",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test",
-    "build": "node esbuild.js --production",
-    "publish": "vsce publish",
-    "publish-prerelease": "vsce publish --pre-release"
-  },
-  "devDependencies": {
-    "@release-it/keep-a-changelog": "^7.0.0",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "24.4.0",
-    "@types/vscode": "^1.103.0",
-    "@typescript-eslint/eslint-plugin": "^8.42.0",
-    "@typescript-eslint/parser": "^8.42.0",
-    "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2",
-    "@vscode/vsce": "^3.6.0",
-    "esbuild": "^0.25.10",
-    "eslint": "^9.35.0",
-    "release-it": "^19.0.4",
-    "typescript": "^5.9.2"
-  },
-  "release-it": {
-    "github": {
-      "release": false
     },
-    "npm": {
-      "publish": false
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.917.0",
+        "tar": "^7.5.1",
+        "unzipper": "^0.12.3",
+        "vscode-languageclient": "^9.0.1"
     },
-    "plugins": {
-      "@release-it/keep-a-changelog": {
-        "filename": "CHANGELOG.md",
-        "addVersionUrl": true
-      }
+    "scripts": {
+        "vscode:prepublish": "npm run build",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src",
+        "test": "vscode-test",
+        "build": "node esbuild.js --production",
+        "publish": "vsce publish",
+        "publish-prerelease": "vsce publish --pre-release"
+    },
+    "devDependencies": {
+        "@release-it/keep-a-changelog": "^7.0.0",
+        "@types/mocha": "^10.0.10",
+        "@types/node": "24.4.0",
+        "@types/unzipper": "^0.10.11",
+        "@types/vscode": "^1.103.0",
+        "@typescript-eslint/eslint-plugin": "^8.42.0",
+        "@typescript-eslint/parser": "^8.42.0",
+        "@vscode/test-cli": "^0.0.11",
+        "@vscode/test-electron": "^2.5.2",
+        "@vscode/vsce": "^3.6.0",
+        "esbuild": "^0.25.10",
+        "eslint": "^9.35.0",
+        "release-it": "^19.0.4",
+        "typescript": "^5.9.2"
+    },
+    "release-it": {
+        "github": {
+            "release": false
+        },
+        "npm": {
+            "publish": false
+        },
+        "plugins": {
+            "@release-it/keep-a-changelog": {
+                "filename": "CHANGELOG.md",
+                "addVersionUrl": true
+            }
+        }
     }
-  }
 }
