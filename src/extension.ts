@@ -51,7 +51,7 @@ export function activate(context: ExtensionContext) {
         },
         {
             platform: 'linux-arm64',
-            url: 'https://builds.jabref.org/main/jabls-cli-portable_linux_arm64.tar.gz',
+            url: 'https://builds.jabref.org/main/jabls-portable_linux_arm64.tar.gz',
             workingDir: path.join('jabls', 'bin'),
             bin: 'jabls',
             archiveType: 'tar.gz'
