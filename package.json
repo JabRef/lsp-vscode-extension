@@ -107,7 +107,7 @@
         "esbuild": "^0.25.10",
         "eslint": "^9.35.0",
         "release-it": "^19.0.4",
-        "typescript": "^5.9.2"
+        "typescript": "^5.9.3"
     },
     "release-it": {
         "github": {
