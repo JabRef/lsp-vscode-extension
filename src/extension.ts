@@ -29,7 +29,7 @@ export function activate(context: ExtensionContext) {
             archiveType: 'zip'
         },
         {
-            platform: 'linux',
+            platform: 'macos',
             url: 'https://builds.jabref.org/main/jabls-portable_macos.zip',
             workingDir: path.join('jabls.app', 'Contents', 'MacOS'),
             bin: 'jabls',
