@@ -3,6 +3,8 @@ import {
     workspace
 } from 'vscode';
 
+import vscode from 'vscode';
+
 import {
     CloseAction,
     ErrorAction,
@@ -13,6 +15,7 @@ import {
 } from 'vscode-languageclient/node';
 import { ServerManager, ServerArchiveInfo } from './ServerManager';
 import path from 'path';
+
 
 
 let client: LanguageClient | undefined;
@@ -90,15 +93,18 @@ export function activate(context: ExtensionContext) {
         clientOptions
     );
 
+
     client.setTrace(Trace.Verbose);
     client.start();
+
+    context.subscriptions.push(vscode.commands.registerCommand('extension.callCaywHttpEndpoint', callCaywHttpEndpoint));
 
     context.subscriptions.push({
         dispose: async () => {
             await client?.stop();
             await manager?.stopServerProcess();
             console.log('[JabLS] Client stopped (dispose)');
-        }
+        },
     });
 }
 
@@ -106,4 +112,37 @@ export async function deactivate(): Promise<void> {
     await client?.stop();
     await manager?.stopServerProcess();
     console.log('[JabLS] Client stopped (deactivate)');
+}
+
+async function callCaywHttpEndpoint(): Promise<void> {
+    const endpoint: URL | null = URL.parse(vscode.workspace.getConfiguration('jabref').get<string>('cayw.endpoint', 'http://localhost:23119/cayw'));
+    if (!endpoint) {
+        vscode.window.showErrorMessage('CAYW: invalid URL for CAYW endpoint');
+        return;
+    }
+    const result: Response = await fetch(endpoint);
+    if (result.ok) {
+        const text = await result.text();
+        insertCaywResult(text);
+    } else {
+        console.log(`CAYW: received HTTP ${result.status} from CAYW endpoint`);
+        vscode.window.showErrorMessage(`CAYW: received HTTP ${result.status} from endpoint. Make sure it is running.`);
+    }
+    try {
+    } catch (err: any) {
+        console.log('Failed to fetch cayw endpoint: %j', err);
+        vscode.window.showErrorMessage('Could not connect to CAYW endpoint. Make sure it is running.');
+    }
+}
+
+function insertCaywResult(result: string): void {
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+        editor.edit(editBuilder => {
+            editor.selections.forEach(selection => {
+                editBuilder.delete(selection);
+                editBuilder.insert(selection.start, result);
+            });
+        });
+    }
 }

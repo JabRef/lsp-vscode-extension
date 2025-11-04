@@ -35,12 +35,18 @@
                 ]
             }
         ],
+        "commands": [
+            {
+                "command": "extension.callCaywHttpEndpoint",
+                "title": "Call 'Cite as you write' endpoint"
+            }
+        ],
         "configuration": {
             "title": "JabRef 4 VSCode",
             "properties": {
                 "jabref.cayw.endpoint": {
                     "type": "string",
-                    "default": "http://localhost:23119/better-bibtex/cayw?format=biblatex&texstudio=true&minimize=true&command=cite",
+                    "default": "http://localhost:23119/better-bibtex/cayw?format=biblatex&command=autocite",
                     "description": "Endpoint to call the 'cite as you write' picker."
                 },
                 "jabref.client.host": {
@@ -79,7 +85,13 @@
                     "description": "Enable integrity check"
                 }
             }
-        }
+        },
+        "keybindings": [
+            {
+                "command": "extension.callCaywHttpEndpoint",
+                "key": "alt+shift+z"
+            }
+        ]
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.917.0",
