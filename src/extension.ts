@@ -120,15 +120,15 @@ async function callCaywHttpEndpoint(): Promise<void> {
         vscode.window.showErrorMessage('CAYW: invalid URL for CAYW endpoint');
         return;
     }
-    const result: Response = await fetch(endpoint);
-    if (result.ok) {
-        const text = await result.text();
-        insertCaywResult(text);
-    } else {
-        console.log(`CAYW: received HTTP ${result.status} from CAYW endpoint`);
-        vscode.window.showErrorMessage(`CAYW: received HTTP ${result.status} from endpoint. Make sure it is running.`);
-    }
     try {
+        const result: Response = await fetch(endpoint);
+        if (result.ok) {
+            const text = await result.text();
+            insertCaywResult(text);
+        } else {
+            console.log(`CAYW: received HTTP ${result.status} from CAYW endpoint`);
+            vscode.window.showErrorMessage(`CAYW: received HTTP ${result.status} from endpoint. Make sure it is running.`);
+        }
     } catch (err: any) {
         console.log('Failed to fetch cayw endpoint: %j', err);
         vscode.window.showErrorMessage('Could not connect to CAYW endpoint. Make sure it is running.');
