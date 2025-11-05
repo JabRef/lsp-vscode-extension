@@ -64,15 +64,15 @@
                     "default": true,
                     "description": "Enable consistency check"
                 },
-                "jabref.consistencyCheck.optional": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Enable warnings on optional fields"
-                },
                 "jabref.consistencyCheck.required": {
                     "type": "boolean",
                     "default": true,
                     "description": "Enable warnings on required fields"
+                },
+                "jabref.consistencyCheck.optional": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable warnings on optional fields"
                 },
                 "jabref.consistencyCheck.unknown": {
                     "type": "boolean",
