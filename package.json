@@ -16,6 +16,7 @@
     ],
     "activationEvents": [
         "onLanguage:bibtex",
+        "onLanguage:latex",
         "onLanguage:markdown"
     ],
     "main": "./dist/extension.js",
@@ -26,6 +27,12 @@
                 "extensions": [
                     ".bib",
                     ".bibtex"
+                ]
+            },
+            {
+                "id": "latex",
+                "extensions": [
+                    ".tex"
                 ]
             },
             {
