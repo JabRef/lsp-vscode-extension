@@ -40,6 +40,8 @@ export class ServerManager {
 
     private readonly metadataFile: string;
 
+    private readonly statusBarItemTimeoutMs: number = 10000;
+
     constructor(readonly serverInfos: ServerArchiveInfo[]) {
         this.platformId = this.detectPlatform();
         this.info = this.pickServerInfoForPlatform(this.platformId, serverInfos);
@@ -58,13 +60,15 @@ export class ServerManager {
         const host = cfg.get<string>('client.host', 'localhost');
 
         if (await this.tryConnectOnce(port, host)) {
+            vscode.window.setStatusBarMessage('Connecting to running JabLS server.', this.statusBarItemTimeoutMs);
             return this.connectWithRetry(port, host);
         }
-
+        vscode.window.setStatusBarMessage('Attempting to start JabLS server.', this.statusBarItemTimeoutMs);
         await this.prepareServerBinaries();
 
         await this.spawnServerProcessIfNeeded();
-
+        // wait for server to start
+        await new Promise(resolve => setTimeout(resolve, 5000));
         return this.connectWithRetry(port, host);
     }
 
@@ -90,6 +94,7 @@ export class ServerManager {
             return 'linux';
         }
 
+        vscode.window.showErrorMessage(`Unsupported platform for JabLs: ${nodePlatform} / ${nodeArch}`);
         throw new Error(`Unsupported platform: ${nodePlatform} / ${nodeArch}`);
     }
 
@@ -99,6 +104,7 @@ export class ServerManager {
     ): ServerArchiveInfo {
         const match = infos.find(i => i.platform === platform);
         if (!match) {
+            vscode.window.showErrorMessage(`No JabLS binaries found for platform "${platform}".`);
             throw new Error(
                 `No ServerArchiveInfo provided for platform "${platform}".`
             );
@@ -176,6 +182,7 @@ export class ServerManager {
 
             const req = client.get(this.info.url, (res) => {
                 if (res.statusCode && res.statusCode >= 400) {
+                    vscode.window.showErrorMessage(`Failed to download JabLS server: ${res.statusCode} ${res.statusMessage}`);
                     reject(new Error(`Download failed with status ${res.statusCode}`));
                     return;
                 }
@@ -187,10 +194,16 @@ export class ServerManager {
                     fileStream.close();
                     resolve();
                 });
-                fileStream.on('error', reject);
+                fileStream.on('error', () => {
+                    vscode.window.showErrorMessage(`Failed to write JabLS server archive to disk.`);
+                    reject;
+                });
             });
 
-            req.on('error', reject);
+            req.on('error', () => {
+                vscode.window.showErrorMessage(`Failed to download and writing JabLS server archive to disk.`);
+                reject;
+            });
         });
 
         return tmpZipPath;
@@ -231,6 +244,7 @@ export class ServerManager {
         const mustRedownload = this.needsRedownload(localMeta, remoteMeta);
 
         if (mustRedownload) {
+            vscode.window.setStatusBarMessage('[JabLS] Downloading or updating JabLS server binaries...', this.statusBarItemTimeoutMs);
             const zipPath = await this.downloadArchive();
             await this.extractArchiveIntoServerDir(zipPath, this.info.archiveType);
             await this.ensureExecutable(
@@ -287,16 +301,19 @@ export class ServerManager {
                 console.error(
                     `[JabLS process] Failed to start server: ${error.message}`
                 );
+                vscode.window.showErrorMessage(`Failed to start JabLS server: ${error.message}`);
                 this.serverProcess = undefined;
             });
 
             this.serverProcess.once('exit', (code, signal) => {
+                vscode.window.showWarningMessage('JabLS server process has exited.');
                 console.log(
                     `[JabLS process] server exited code=${code} signal=${signal}`
                 );
                 this.serverProcess = undefined;
             });
         } catch (err: any) {
+            vscode.window.showErrorMessage(`Failed to spawn JabLS server process: ${err?.message ?? err}`);
             console.error(`[JabLS process] spawn failed: ${err?.message ?? err}`);
             this.serverProcess = undefined;
         }
@@ -346,6 +363,7 @@ export class ServerManager {
                 };
 
                 socket.once('connect', () => {
+                    vscode.window.setStatusBarMessage('[JabLS] connected');
                     attempt = 0;
                     cleanup();
                     resolve({
@@ -355,6 +373,8 @@ export class ServerManager {
                 });
 
                 socket.once('error', () => {
+                    vscode.window.setStatusBarMessage('[JabLS] connection error, retrying...', this.statusBarItemTimeoutMs);
+                    vscode.window.showWarningMessage('JabLS server connection closed. Attempting to reconnect...');
                     restart();
                 });
 
@@ -362,6 +382,8 @@ export class ServerManager {
                     if (hadError) {
                         return;
                     }
+                    vscode.window.setStatusBarMessage('[JabLS] connection closed, retrying...', this.statusBarItemTimeoutMs);
+                    vscode.window.showWarningMessage('JabLS server connection closed. Attempting to reconnect...');
                     restart();
                 });
             };

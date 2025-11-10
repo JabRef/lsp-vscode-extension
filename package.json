@@ -16,6 +16,7 @@
     ],
     "activationEvents": [
         "onLanguage:bibtex",
+        "onLanguage:latex",
         "onLanguage:markdown"
     ],
     "main": "./dist/extension.js",
@@ -29,15 +30,42 @@
                 ]
             },
             {
+                "id": "latex",
+                "extensions": [
+                    ".tex"
+                ]
+            },
+            {
                 "id": "markdown",
                 "extensions": [
                     ".md"
                 ]
             }
         ],
+        "commands": [
+            {
+                "command": "extension.callCaywHttpEndpoint",
+                "title": "Call 'Cite as you write' endpoint"
+            }
+        ],
         "configuration": {
             "title": "JabRef 4 VSCode",
             "properties": {
+                "jabref.cayw.endpoint": {
+                    "type": "string",
+                    "default": "http://localhost:23119/better-bibtex/cayw?format=biblatex&command=autocite",
+                    "description": "Endpoint to call the 'cite as you write' picker."
+                },
+                "jabref.client.host": {
+                    "type": "string",
+                    "default": "localhost",
+                    "description": "Host for the JabRef language server"
+                },
+                "jabref.client.port": {
+                    "type": "number",
+                    "default": 2087,
+                    "description": "Port for the JabRef language server"
+                },
                 "jabref.consistencyCheck.enabled": {
                     "type": "boolean",
                     "default": true,
@@ -62,19 +90,15 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Enable integrity check"
-                },
-                "jabref.client.port": {
-                    "type": "number",
-                    "default": 2087,
-                    "description": "Port for the JabRef language server"
-                },
-                "jabref.client.host": {
-                    "type": "string",
-                    "default": "localhost",
-                    "description": "Host for the JabRef language server"
                 }
             }
-        }
+        },
+        "keybindings": [
+            {
+                "command": "extension.callCaywHttpEndpoint",
+                "key": "alt+shift+z"
+            }
+        ]
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.917.0",
