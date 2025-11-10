@@ -95,7 +95,7 @@ jobs:
     steps:
       - run: |
           echo ${{ github.actor }}
-          echo ${{ github.event_name == 'pull_request' }}
+          echo ${{ github.event_name }}
 
   dependabot:
     needs: build
