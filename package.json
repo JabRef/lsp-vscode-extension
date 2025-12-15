@@ -101,7 +101,7 @@
         ]
     },
     "dependencies": {
-        "@aws-sdk/client-s3": "^3.946.0",
+        "@aws-sdk/client-s3": "^3.948.0",
         "tar": "^7.5.2",
         "unzipper": "^0.12.3",
         "vscode-languageclient": "^9.0.1"
