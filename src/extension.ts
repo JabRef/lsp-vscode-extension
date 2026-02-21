@@ -25,35 +25,35 @@ export function activate(context: ExtensionContext) {
     const serverInfos: ServerArchiveInfo[] = [
         {
             platform: 'windows',
-            url: 'https://builds.jabref.org/main/jabls-portable_windows.zip',
+            url: 'https://builds.jabref.org/main/windows-amd64/jabls-portable_windows.zip',
             workingDir: 'jabls',
             bin: 'jabls.exe',
             archiveType: 'zip'
         },
         {
             platform: 'macos',
-            url: 'https://builds.jabref.org/main/jabls-portable_macos.zip',
+            url: 'https://builds.jabref.org/main/macOS-intel/jabls-portable_macos-intel.zip',
             workingDir: path.join('jabls.app', 'Contents', 'MacOS'),
             bin: 'jabls',
             archiveType: 'zip'
         },
         {
             platform: 'macos-arm',
-            url: 'https://builds.jabref.org/main/jabls-portable_macos-arm.zip',
+            url: 'https://builds.jabref.org/main/macOS-silicon/jabls-portable_macos-silicon.zip',
             workingDir: path.join('jabls.app', 'Contents', 'MacOS'),
             bin: 'jabls',
             archiveType: 'zip'
         },
         {
             platform: 'linux',
-            url: 'https://builds.jabref.org/main/jabls-portable_linux.tar.gz',
+            url: 'https://builds.jabref.org/main/linux-amd64/jabls-portable_linux.tar.gz',
             workingDir: path.join('jabls', 'bin'),
             bin: 'jabls',
             archiveType: 'tar.gz'
         },
         {
             platform: 'linux-arm64',
-            url: 'https://builds.jabref.org/main/jabls-portable_linux_arm64.tar.gz',
+            url: 'https://builds.jabref.org/main/linux-arm/jabls-portable_linux_arm64.tar.gz',
             workingDir: path.join('jabls', 'bin'),
             bin: 'jabls',
             archiveType: 'tar.gz'
