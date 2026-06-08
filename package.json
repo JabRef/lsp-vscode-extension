@@ -118,7 +118,7 @@
         "publish-prerelease": "vsce publish --pre-release"
     },
     "devDependencies": {
-        "@release-it/keep-a-changelog": "^7.0.1",
+        "@release-it/keep-a-changelog": "^7.1.0",
         "@types/mocha": "^10.0.10",
         "@types/node": "25.9.1",
         "@types/unzipper": "^0.10.11",
