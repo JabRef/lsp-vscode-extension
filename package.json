@@ -103,7 +103,7 @@
     "dependencies": {
         "@aws-sdk/client-s3": "^3.1073.0",
         "tar": "^7.5.16",
-        "unzipper": "^0.12.3",
+        "unzipper": "^0.12.5",
         "vscode-languageclient": "^10.0.0"
     },
     "scripts": {
