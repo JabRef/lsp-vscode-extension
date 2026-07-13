@@ -129,7 +129,7 @@
         "@vscode/test-electron": "^3.0.0",
         "@vscode/vsce": "^3.9.2",
         "esbuild": "^0.28.1",
-        "eslint": "^10.6.0",
+        "eslint": "^10.7.0",
         "release-it": "^20.2.1",
         "typescript": "^6.0.3"
     },
