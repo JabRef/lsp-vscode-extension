@@ -130,7 +130,7 @@
         "@vscode/vsce": "^3.9.2",
         "esbuild": "^0.28.1",
         "eslint": "^10.8.0",
-        "release-it": "^21.0.1",
+        "release-it": "^21.0.2",
         "typescript": "^6.0.3"
     },
     "release-it": {
