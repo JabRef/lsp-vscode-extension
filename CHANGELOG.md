@@ -2,7 +2,7 @@
 
 All notable changes to the "jabref-4-vscode" extension will be documented in this file.
 
-## [Unreleased]
+## [0.2.0] - 2026-09-27
 
 ### Added
 
@@ -29,6 +29,7 @@ All notable changes to the "jabref-4-vscode" extension will be documented in thi
 
 - Initial connection to JabRef
 
-[Unreleased]: https://github.com/JabRef/lsp-vscode-extension/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/JabRef/lsp-vscode-extension/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/JabRef/lsp-vscode-extension/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/JabRef/lsp-vscode-extension/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/JabRef/lsp-vscode-extension/releases/tag/0.1.0
