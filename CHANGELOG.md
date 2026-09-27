@@ -4,6 +4,10 @@ All notable changes to the "jabref-4-vscode" extension will be documented in thi
 
 ## [Unreleased]
 
+### Fixed
+
+- The language server is now notified when `.bib`, `.bibtex` and `.md` files change on disk.
+
 ## [0.2.0] - 2026-09-27
 
 ### Added
