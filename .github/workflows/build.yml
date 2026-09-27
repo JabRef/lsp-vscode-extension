@@ -80,6 +80,9 @@ jobs:
       - run: npm run publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      - run: npx ovsx publish
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
 
   changelog:
     runs-on: ubuntu-latest
