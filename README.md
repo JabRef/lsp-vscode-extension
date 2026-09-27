@@ -22,7 +22,12 @@ The extension connects to it on `localhost:2087` (configurable via `jabref.clien
 - Otherwise, the extension downloads the standalone language server (JabLS) from the [JabRef development builds](https://builds.jabref.org/main/) and starts it.
   No Java installation is required.
 
-## How to test this extension
+## Run locally from source
 
-Clone this repository, run `npm install` and `npm run build`, and open the repository in VSCode.
-Then use VSCode's "Run and Debug" to start a VSCode instance with the extension installed.
+1. `git clone https://github.com/JabRef/lsp-vscode-extension.git`
+2. `cd lsp-vscode-extension`
+3. `npm install`
+4. Open the folder in VSCode.
+5. Press <kbd>F5</kbd> (launch configuration "Run Extension").
+   This builds the extension and opens a second VSCode window with the extension loaded.
+6. In that window, open a `.bib` file to see the checks.
