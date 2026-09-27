@@ -181,7 +181,7 @@ export class ServerManager {
             const client = url.protocol === 'http:' ? http : https;
 
             const req = client.get(this.info.url, (res) => {
-                if (res.statusCode && res.statusCode >= 400) {
+                if (res.statusCode && res.statusCode >= 300) {
                     vscode.window.showErrorMessage(`Failed to download JabLS server: ${res.statusCode} ${res.statusMessage}`);
                     reject(new Error(`Download failed with status ${res.statusCode}`));
                     return;
