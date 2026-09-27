@@ -13,4 +13,4 @@ Since VSCode marked place kind of demands to have the next version number in the
 ## Notes on versioning
 
 VSCode requires to decide [either pre-release or release](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) for a certain version.
-For versions 0.x.y, we always do full relases, because a) users can just install them and b) 0.x.y indicates that these are development versions, where breaking changes can occur.
+For versions 0.x.y, we always do full releases, because a) users can just install them and b) 0.x.y indicates that these are development versions, where breaking changes can occur.

@@ -13,4 +13,3 @@ out/**
 node_modules/**/test/**
 node_modules/**
 tsconfig.json
-vsc-extension-quickstart.md
