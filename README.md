@@ -9,7 +9,7 @@ Both options can be enabled or disabled separately in the VSCode extension setti
 
 ## Installation
 
-Install the extension from [Open VSX](https://open-vsx.org/extension/JabRef/jabref-4-vscode).
+Install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=jabref.jabref-4-vscode) or from [Open VSX](https://open-vsx.org/extension/JabRef/jabref-4-vscode).
 
 ## How to test this extension
 
