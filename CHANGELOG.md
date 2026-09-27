@@ -12,7 +12,6 @@ All notable changes to the "jabref-4-vscode" extension will be documented in thi
 - Keybinding to call the "cite as you write" (CAYW) endpoint.
 - Status messages in the UI.
 - Links to the documentation of JabRef's integrity and consistency checks.
-- The extension is published on [Open VSX](https://open-vsx.org/extension/JabRef/jabref-4-vscode).
 
 ### Fixed
 
