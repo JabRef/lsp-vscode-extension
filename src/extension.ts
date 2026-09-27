@@ -82,7 +82,7 @@ export function activate(context: ExtensionContext) {
             language: 'markdown'
         }],
         synchronize: {
-            fileEvents: workspace.createFileSystemWatcher('**/.*{bib,bibtex,md}'),
+            fileEvents: workspace.createFileSystemWatcher('**/*.{bib,bibtex,md}'),
             configurationSection: 'jabref'
         },
         errorHandler: {
