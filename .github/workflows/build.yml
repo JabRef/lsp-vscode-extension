@@ -80,7 +80,9 @@ jobs:
       - run: npm run publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
-      - run: npx ovsx publish
+      # publish to Open VSX even if publishing to the Visual Studio Marketplace failed
+      - if: ${{ !cancelled() }}
+        run: npx ovsx publish
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
 
