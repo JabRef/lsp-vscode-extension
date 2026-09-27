@@ -127,8 +127,9 @@ jobs:
         run: |
           jbang trust add https://github.com/adr/madrlint/
           for f in docs/decisions/[0-9]*.md; do
-            jbang madrlint@adr/madrlint -q -n11 --output-format=github-actions "$f" || exit 1
+            jbang madrlint@adr/madrlint -n11 --output-format=github-actions "$f" || exit 1
           done | tee madrlint.log
+          grep -q 'violations detected' madrlint.log
           ! grep -q '^::error' madrlint.log
 
   markdown:
