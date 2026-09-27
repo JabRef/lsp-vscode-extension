@@ -1,4 +1,4 @@
-# JabRef 4 VSCode
+﻿# JabRef 4 VSCode
 
 JabRef 4 VSCode brings the support for using JabRef's features like integrity and consistency checks and more to your VSCode environment!
 
@@ -28,6 +28,6 @@ The extension connects to it on `localhost:2087` (configurable via `jabref.clien
 2. `cd lsp-vscode-extension`
 3. `npm install`
 4. Open the folder in VSCode.
-5. Press <kbd>F5</kbd> (launch configuration "Run Extension").
+5. Press `F5` (launch configuration "Run Extension").
    This builds the extension and opens a second VSCode window with the extension loaded.
 6. In that window, open a `.bib` file to see the checks.
