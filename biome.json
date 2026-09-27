@@ -1,0 +1,22 @@
+{
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "formatter": {
+        "enabled": false
+    },
+    "linter": {
+        "rules": {
+            "preset": "none",
+            "performance": {
+                "noNamespaceImport": "error"
+            },
+            "style": {
+                "useBlockStatements": "warn",
+                "useNamingConvention": "warn",
+                "useThrowOnlyError": "warn"
+            },
+            "suspicious": {
+                "noDoubleEquals": "warn"
+            }
+        }
+    }
+}

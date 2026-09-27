@@ -111,27 +111,25 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src",
+        "lint": "biome lint src",
         "test": "vscode-test",
         "build": "node esbuild.js --production",
         "publish": "vsce publish",
         "publish-prerelease": "vsce publish --pre-release"
     },
     "devDependencies": {
+        "@biomejs/biome": "2.5.14",
         "@release-it/keep-a-changelog": "^8.0.1",
         "@types/mocha": "^10.0.10",
         "@types/node": "26.6.2",
         "@types/unzipper": "^0.10.11",
         "@types/vscode": "^1.103.0",
-        "@typescript-eslint/eslint-plugin": "^8.70.1",
-        "@typescript-eslint/parser": "^8.70.0",
         "@vscode/test-cli": "^0.0.15",
         "@vscode/test-electron": "^3.1.0",
         "@vscode/vsce": "^4.0.0",
         "esbuild": "^0.28.2",
-        "eslint": "^10.11.0",
         "release-it": "^21.1.0",
-        "typescript": "^6.0.3"
+        "typescript": "^7.0.2"
     },
     "release-it": {
         "github": {

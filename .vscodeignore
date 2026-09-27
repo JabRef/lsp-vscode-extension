@@ -1,7 +1,7 @@
 **/*.map
 **/*.ts
 **/.vscode-test.*
-**/eslint.config.mjs
+biome.json
 **/tsconfig.json
 .github/**
 .gitignore

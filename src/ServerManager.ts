@@ -7,7 +7,7 @@ import fsp from 'fs/promises';
 import http from 'http';
 import https from 'https';
 import vscode from 'vscode';
-import * as tar from 'tar';
+import { extract } from 'tar';
 import unzipper from 'unzipper';
 
 export type Platform = 'windows' | 'macos' | 'macos-arm' | 'linux' | 'linux-arm64';
@@ -229,7 +229,7 @@ export class ServerManager {
     }
 
     private async extractTarGzIntoServerDir(tarGzPath: string): Promise<void> {
-        await tar.x({
+        await extract({
             file: tarGzPath,
             cwd: this.serverRootDir,
             gzip: true,
