@@ -7,8 +7,10 @@ Since VSCode marked place kind of demands to have the next version number in the
 
 ## Releasing a new version
 
-1. `npx release-it --no-increment`
-2. `npx github-release-from-changelog`
+1. Update `version` in `package.json`.
+2. `npx release-it --no-increment`
+
+Pushing the tag triggers CI, which creates the GitHub release and publishes to the Visual Studio Marketplace and Open VSX.
 
 ## Notes on versioning
 

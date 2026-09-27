@@ -71,6 +71,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/') && github.event_name != 'pull_request'
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -85,6 +87,10 @@ jobs:
         run: npx ovsx publish
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
+      - if: ${{ !cancelled() }}
+        run: npx github-release-from-changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   changelog:
     runs-on: ubuntu-latest
