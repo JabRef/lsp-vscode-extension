@@ -112,6 +112,26 @@ jobs:
       - run: npm run lint
       - run: npm run compile
 
+  adr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 25
+      - uses: jbangdev/setup-jbang@v0.1.1
+      # madrlint exits with 0 even if it finds violations, so the output is checked instead.
+      # Rule 11 (link check) is disabled, because its native library is missing from the released jar.
+      - shell: bash
+        run: |
+          jbang trust add https://github.com/adr/madrlint/
+          for f in docs/decisions/[0-9]*.md; do
+            jbang madrlint@adr/madrlint -n11 --output-format=github-actions "$f" || exit 1
+          done | tee madrlint.log
+          grep -q 'violations detected' madrlint.log
+          ! grep -q '^::error' madrlint.log
+
   markdown:
     runs-on: ubuntu-latest
     steps:
