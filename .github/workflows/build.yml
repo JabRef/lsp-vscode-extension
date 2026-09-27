@@ -93,6 +93,15 @@ jobs:
           script: com.github.nbbrd.heylogs:heylogs-cli:0.14.0:bin
           scriptargs: "check --versioning semver"
 
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: DavidAnson/markdownlint-cli2-action@v24
+        with:
+          globs: "**/*.md"
+      - uses: crate-ci/typos@v1.50.3
+
   dependabot:
     needs: build
     runs-on: ubuntu-latest
