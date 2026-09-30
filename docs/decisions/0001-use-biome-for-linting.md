@@ -32,12 +32,12 @@ Chosen option: "Biome", because it does not depend on the TypeScript compiler an
 
 * Good, because TypeScript 7 can be used.
 * Good, because one dev dependency (`@biomejs/biome`) replaces three (`eslint`, `@typescript-eslint/parser`, `@typescript-eslint/eslint-plugin`).
-* Good, because Biome also offers a formatter, which we can enable later.
-* Bad, because the ESLint `semi` rule has no linter equivalent in Biome. It is covered by the Biome formatter, which is not enabled yet.
+* Good, because the Biome formatter replaces Prettier and covers the ESLint `semi` rule, which has no linter equivalent in Biome.
+* Good, because Biome's recommended rule set extends the few rules we had.
 
 ### Confirmation
 
-The `lint` job in `.github/workflows/build.yml` runs `npm run lint` (`biome lint src`) and `npm run compile`.
+The `lint` job in `.github/workflows/build.yml` runs `npm run lint` (`biome check src`: lint and formatting) and `npm run compile`.
 
 ## Pros and Cons of the Options
 

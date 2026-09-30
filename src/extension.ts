@@ -1,22 +1,14 @@
-import {
-    ExtensionContext,
-    workspace
-} from 'vscode';
-
-import vscode from 'vscode';
-
+import path from 'node:path';
+import vscode, { type ExtensionContext, workspace } from 'vscode';
 import {
     CloseAction,
     ErrorAction,
     LanguageClient,
-    LanguageClientOptions,
-    ServerOptions,
+    type LanguageClientOptions,
+    type ServerOptions,
     Trace,
 } from 'vscode-languageclient/node';
-import { ServerManager, ServerArchiveInfo } from './ServerManager';
-import path from 'path';
-
-
+import { type ServerArchiveInfo, ServerManager } from './ServerManager';
 
 let client: LanguageClient | undefined;
 let manager: ServerManager | undefined;
@@ -28,62 +20,69 @@ export function activate(context: ExtensionContext) {
             url: 'https://builds.jabref.org/main/windows-amd64/tools/jabls-portable_windows.zip',
             workingDir: 'jabls',
             bin: 'jabls.exe',
-            archiveType: 'zip'
+            archiveType: 'zip',
         },
         {
             platform: 'macos',
             url: 'https://builds.jabref.org/main/macOS-intel/tools/jabls-portable_macos-intel.zip',
             workingDir: path.join('jabls.app', 'Contents', 'MacOS'),
             bin: 'jabls',
-            archiveType: 'zip'
+            archiveType: 'zip',
         },
         {
             platform: 'macos-arm',
             url: 'https://builds.jabref.org/main/macOS-silicon/tools/jabls-portable_macos-silicon.zip',
             workingDir: path.join('jabls.app', 'Contents', 'MacOS'),
             bin: 'jabls',
-            archiveType: 'zip'
+            archiveType: 'zip',
         },
         {
             platform: 'linux',
             url: 'https://builds.jabref.org/main/linux-amd64/tools/jabls-portable_linux.tar.gz',
             workingDir: path.join('jabls', 'bin'),
             bin: 'jabls',
-            archiveType: 'tar.gz'
+            archiveType: 'tar.gz',
         },
         {
             platform: 'linux-arm64',
             url: 'https://builds.jabref.org/main/linux-arm/tools/jabls-portable_linux_arm64.tar.gz',
             workingDir: path.join('jabls', 'bin'),
             bin: 'jabls',
-            archiveType: 'tar.gz'
-        }
+            archiveType: 'tar.gz',
+        },
     ];
 
-    manager = new ServerManager(serverInfos);
+    const serverManager = new ServerManager(serverInfos);
+    manager = serverManager;
 
-    const serverOptions: ServerOptions = () => manager!.ensureServerConnection();
+    const serverOptions: ServerOptions = () => serverManager.ensureServerConnection();
 
     const clientOptions: LanguageClientOptions = {
-        documentSelector: [{
-            scheme: 'file',
-            language: 'bibtex'
-        }, {
-            scheme: 'file',
-            language: 'latex'
-        }, {
-            scheme: 'untitled',
-            language: 'latex'
-        }, {
-            scheme: 'file',
-            language: 'markdown'
-        }, {
-            scheme: 'untitled',
-            language: 'markdown'
-        }],
+        documentSelector: [
+            {
+                scheme: 'file',
+                language: 'bibtex',
+            },
+            {
+                scheme: 'file',
+                language: 'latex',
+            },
+            {
+                scheme: 'untitled',
+                language: 'latex',
+            },
+            {
+                scheme: 'file',
+                language: 'markdown',
+            },
+            {
+                scheme: 'untitled',
+                language: 'markdown',
+            },
+        ],
         synchronize: {
             fileEvents: workspace.createFileSystemWatcher('**/*.{bib,bibtex,md}'),
-            configurationSection: 'jabref'
+            configurationSection: 'jabref',
         },
         errorHandler: {
             error: () => ({ action: ErrorAction.Continue }),
@@ -92,12 +91,7 @@ export function activate(context: ExtensionContext) {
         initializationFailedHandler: () => true,
     };
 
-    client = new LanguageClient(
-        'jabref-4-vscode',
-        'JabRef LSP Client',
-        serverOptions,
-        clientOptions
-    );
+    client = new LanguageClient('jabref-4-vscode', 'JabRef LSP Client', serverOptions, clientOptions);
     client.setTrace(Trace.Verbose);
     client.start();
 
@@ -119,7 +113,9 @@ export async function deactivate(): Promise<void> {
 }
 
 async function callCaywHttpEndpoint(): Promise<void> {
-    const endpoint: URL | null = URL.parse(vscode.workspace.getConfiguration('jabref').get<string>('CAYW.endpoint', 'http://localhost:23119/cayw'));
+    const endpoint: URL | null = URL.parse(
+        vscode.workspace.getConfiguration('jabref').get<string>('CAYW.endpoint', 'http://localhost:23119/cayw'),
+    );
     console.log(endpoint);
     if (!endpoint) {
         vscode.window.showErrorMessage('CAYW: invalid URL for CAYW endpoint');
@@ -132,9 +128,11 @@ async function callCaywHttpEndpoint(): Promise<void> {
             insertCaywResult(text);
         } else {
             console.log(`CAYW: received HTTP ${result.status} from CAYW endpoint`);
-            vscode.window.showErrorMessage(`CAYW: received HTTP ${result.status} from endpoint. Make sure it is running.`);
+            vscode.window.showErrorMessage(
+                `CAYW: received HTTP ${result.status} from endpoint. Make sure it is running.`,
+            );
         }
-    } catch (err: any) {
+    } catch (err) {
         console.log('Failed to fetch cayw endpoint: %j', err);
         vscode.window.showErrorMessage('Could not connect to CAYW endpoint. Make sure it is running.');
     }
@@ -143,8 +141,8 @@ async function callCaywHttpEndpoint(): Promise<void> {
 function insertCaywResult(result: string): void {
     const editor = vscode.window.activeTextEditor;
     if (editor) {
-        editor.edit(editBuilder => {
-            editor.selections.forEach(selection => {
+        editor.edit((editBuilder) => {
+            editor.selections.forEach((selection) => {
                 editBuilder.delete(selection);
                 editBuilder.insert(selection.start, result);
             });
