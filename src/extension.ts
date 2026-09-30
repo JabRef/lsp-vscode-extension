@@ -97,6 +97,8 @@ export function activate(context: ExtensionContext) {
 
     context.subscriptions.push(vscode.commands.registerCommand('extension.callCaywHttpEndpoint', callCaywHttpEndpoint));
 
+    registerSpellCheckerConfig(context);
+
     context.subscriptions.push({
         dispose: async () => {
             await client?.stop();
@@ -110,6 +112,14 @@ export async function deactivate(): Promise<void> {
     await client?.stop();
     await manager?.stopServerProcess();
     console.log('[JabLS] Client stopped (deactivate)');
+}
+
+// Without this, Code Spell Checker flags BibTeX field names such as "issn", which is easily mistaken for a JabRef diagnostic.
+function registerSpellCheckerConfig(context: ExtensionContext): void {
+    vscode.extensions.getExtension<{ registerConfig(path: string): Promise<void> }>('streetsidesoftware.code-spell-checker')
+        ?.activate()
+        .then(api => api?.registerConfig?.(context.asAbsolutePath('cspell-ext.json')))
+        .then(undefined, err => console.log('Could not register cspell config: %j', err));
 }
 
 async function callCaywHttpEndpoint(): Promise<void> {
