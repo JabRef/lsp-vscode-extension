@@ -1,0 +1,17 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+    "id": "jabref-bibtex",
+    "name": "JabRef BibTeX",
+    "description": "Skips BibTeX syntax (entry types, citation keys, field names, JabRef metadata) so only field values are spell checked.",
+    "readonly": true,
+    "languageSettings": [
+        {
+            "languageId": "bibtex",
+            "ignoreRegExpList": [
+                "/@\\w+\\s*\\{[^,\\s]*/g",
+                "/(?<=(?:^|,)\\s*)[\\p{L}\\d_:.-]+(?=\\s*=)/gmu",
+                "/@comment\\s*\\{jabref-meta:[^}]*\\}/gi"
+            ]
+        }
+    ]
+}
