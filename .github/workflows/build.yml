@@ -139,7 +139,7 @@ jobs:
       - uses: DavidAnson/markdownlint-cli2-action@v24
         with:
           globs: "**/*.md"
-      - uses: crate-ci/typos@v1.50.3
+      - uses: crate-ci/typos@v1.51.1
 
   dependabot:
     needs: build

@@ -1,11 +1,18 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "formatter": {
-        "enabled": false
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 120
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single"
+        }
     },
     "linter": {
         "rules": {
-            "preset": "none",
+            "preset": "recommended",
             "performance": {
                 "noNamespaceImport": "error"
             },

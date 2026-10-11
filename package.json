@@ -101,27 +101,28 @@
         ]
     },
     "dependencies": {
-        "@aws-sdk/client-s3": "^3.1139.0",
+        "@aws-sdk/client-s3": "^3.1146.0",
         "tar": "^7.5.22",
         "unzipper": "^0.12.5",
-        "vscode-languageclient": "^10.1.1"
+        "vscode-languageclient": "^10.1.2"
     },
     "scripts": {
         "vscode:prepublish": "npm run build",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
-        "lint": "biome lint src",
+        "lint": "biome check src",
+        "format": "biome check --write src",
         "test": "vscode-test",
         "build": "node esbuild.js --production",
         "publish": "vsce publish",
         "publish-prerelease": "vsce publish --pre-release"
     },
     "devDependencies": {
-        "@biomejs/biome": "2.5.14",
+        "@biomejs/biome": "2.5.15",
         "@release-it/keep-a-changelog": "^8.0.1",
         "@types/mocha": "^10.0.10",
-        "@types/node": "26.6.2",
+        "@types/node": "26.6.4",
         "@types/unzipper": "^0.10.11",
         "@types/vscode": "^1.103.0",
         "@vscode/test-cli": "^0.0.15",
