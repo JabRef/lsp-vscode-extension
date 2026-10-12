@@ -6,6 +6,7 @@ All notable changes to the "jabref-4-vscode" extension will be documented in thi
 
 ### Fixed
 
+- Code Spell Checker no longer flags BibTeX syntax such as field names (`issn`, `journaltitle`), entry types and citation keys in `.bib` files.
 - The language server is now notified when `.bib`, `.bibtex` and `.md` files change on disk.
 
 ## [0.2.0] - 2026-09-27
