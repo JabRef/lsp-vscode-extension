@@ -4,6 +4,8 @@ All notable changes to the "jabref-4-vscode" extension will be documented in thi
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-12
+
 ### Fixed
 
 - Code Spell Checker no longer flags BibTeX syntax such as field names (`issn`, `journaltitle`), entry types and citation keys in `.bib` files.
@@ -36,7 +38,8 @@ All notable changes to the "jabref-4-vscode" extension will be documented in thi
 
 - Initial connection to JabRef
 
-[Unreleased]: https://github.com/JabRef/lsp-vscode-extension/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/JabRef/lsp-vscode-extension/compare/0.2.1...HEAD
+[0.2.1]: https://github.com/JabRef/lsp-vscode-extension/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/JabRef/lsp-vscode-extension/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/JabRef/lsp-vscode-extension/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/JabRef/lsp-vscode-extension/releases/tag/0.1.0
