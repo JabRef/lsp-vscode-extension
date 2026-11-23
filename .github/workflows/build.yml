@@ -96,7 +96,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: jbangdev/jbang-action@v0.142.0
+      - uses: jbangdev/jbang-action@v0.143.0
         with:
           script: com.github.nbbrd.heylogs:heylogs-cli:0.14.0:bin
           scriptargs: "check --versioning semver"
@@ -136,10 +136,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: DavidAnson/markdownlint-cli2-action@v24
+      - uses: DavidAnson/markdownlint-cli2-action@v25
         with:
           globs: "**/*.md"
-      - uses: crate-ci/typos@v1.51.1
+      - uses: crate-ci/typos@v1.52.2
 
   dependabot:
     needs: build
