@@ -101,10 +101,10 @@
         ]
     },
     "dependencies": {
-        "@aws-sdk/client-s3": "^3.1146.0",
-        "tar": "^7.5.22",
+        "@aws-sdk/client-s3": "^3.1170.0",
+        "tar": "^7.5.23",
         "unzipper": "^0.12.5",
-        "vscode-languageclient": "^10.1.2"
+        "vscode-languageclient": "^11.0.0"
     },
     "scripts": {
         "vscode:prepublish": "npm run build",
@@ -119,18 +119,18 @@
         "publish-prerelease": "vsce publish --pre-release"
     },
     "devDependencies": {
-        "@biomejs/biome": "2.5.15",
+        "@biomejs/biome": "2.6.8",
         "@release-it/keep-a-changelog": "^8.0.1",
         "@types/mocha": "^10.0.10",
-        "@types/node": "26.6.4",
+        "@types/node": "26.6.6",
         "@types/unzipper": "^0.10.11",
         "@types/vscode": "^1.103.0",
         "@vscode/test-cli": "^0.0.15",
         "@vscode/test-electron": "^3.1.0",
-        "@vscode/vsce": "^4.0.0",
+        "@vscode/vsce": "^4.1.1",
         "esbuild": "^0.28.2",
-        "ovsx": "^1.2.0",
-        "release-it": "^21.1.0",
+        "ovsx": "^1.4.0",
+        "release-it": "^21.1.2",
         "typescript": "^7.0.2"
     },
     "release-it": {
@@ -145,11 +145,6 @@
                 "filename": "CHANGELOG.md",
                 "addVersionUrl": true
             }
-        }
-    },
-    "overrides": {
-        "ovsx": {
-            "@vscode/vsce": "$@vscode/vsce"
         }
     }
 }
