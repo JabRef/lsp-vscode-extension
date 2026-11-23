@@ -4,6 +4,10 @@ All notable changes to the "jabref-4-vscode" extension will be documented in thi
 
 ## [Unreleased]
 
+### Added
+
+- Code action to fetch the entry for a DOI, arXiv ID or ISBN under the cursor and add it to an open `.bib` file (needs a JabLS build with this feature).
+
 ## [0.2.1] - 2026-10-12
 
 ### Fixed
