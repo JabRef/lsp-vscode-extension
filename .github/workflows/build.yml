@@ -142,7 +142,8 @@ jobs:
       - uses: crate-ci/typos@v1.52.2
 
   dependabot:
-    needs: build
+    # Auto-merge is refused while any check is pending, so wait for all of them, not just the required ones.
+    needs: [build, changelog, lint, adr, markdown]
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
