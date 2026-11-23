@@ -7,6 +7,7 @@ JabRef 4 VSCode brings the support for using JabRef's features like integrity an
 You can use JabRef's [integrity](https://docs.jabref.org/finding-sorting-and-cleaning-entries/checkintegrity) and [consistency](https://docs.jabref.org/finding-sorting-and-cleaning-entries/checkconsistency) checks right in your VSCode environment when working with `.bib` or `.bibtex` files.
 Both options can be enabled or disabled separately in the VSCode extension settings.
 
+Hovering over a DOI, arXiv ID or ISBN shows it as full citation, in the preview style selected in JabRef (if that is the customized style, the first CSL or BST style of JabRef's preview cycle).
 To add a reference, put the cursor on a DOI, arXiv ID or ISBN (also as a link, e.g. `https://arxiv.org/abs/2608.10906`) in a Markdown, LaTeX or `.bib` file and open the quick fix menu (`Ctrl+.`).
 "Add entry for … to refs.bib" fetches the entry and appends it to that `.bib` file; the file has to be open in an editor.
 
